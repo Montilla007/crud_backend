@@ -19,10 +19,10 @@ app.use(bodyParser.json());
 app.use(cors());
 
 // Routes
-app.use('/data', processData)
+app.use('/api/v1/student', processData)
 
 app.get('/', (req, res) => {
-    res.redirect('/data');
+    res.redirect('/api/v1/student');
   });
 
 // Start server
