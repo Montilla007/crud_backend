@@ -12,7 +12,7 @@ const port = 5001;
 const connectDB = require('./connection/connect_db')
 
 // Routers
-const processData = require('./route/data_route')
+const processData = require('./route/student_route')
 
 // Middleware
 app.use(bodyParser.json());
