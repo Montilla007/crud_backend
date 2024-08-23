@@ -25,8 +25,15 @@ app.get('/', (req, res) => {
     res.redirect('/api/v1/student');
   });
 
-// Connect DB
-mongoose.connect(process.env.MONGO_URI)
+// Database connection
+const DB = process.env.MONGO_URI.replace(
+    '<password>',
+    process.env.DATABASE_PASSWORD,
+  );
+  
+  mongoose
+    .connect(DB);
+
 // Start server
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
