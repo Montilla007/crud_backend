@@ -6,12 +6,6 @@ const cors = require('cors');
 
 // Initialize express app
 const app = express();
-const port = 5001;
-
-// Connect to MongoDB
-const connectDB = (url) => {
-    return mongoose.connect(url)
-  }
 
 // Routers
 const studentRoute = require('./route/studentRoute')
@@ -26,17 +20,12 @@ app.use('/api/v1/student', studentRoute)
 app.get('/', (req, res) => {
     res.redirect('/api/v1/student');
   });
-
+// Connect DB
+mongoose.connect(process.env.MONGO_URI)
 // Start server
-const start = async () => {
-    try {
-      await connectDB(process.env.MONGO_URI);
-      app.listen(port, () =>
-        console.log(`Server is listening on port ${port}...`)
-      );
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  start();
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+  console.log(`App is running on port ${port}...`);
+})
+
 module.exports = app;
