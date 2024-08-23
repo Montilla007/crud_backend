@@ -9,7 +9,9 @@ const app = express();
 const port = 5001;
 
 // Connect to MongoDB
-const connectDB = require('./connection/connect_db')
+const connectDB = (url) => {
+    return mongoose.connect(url)
+  }
 
 // Routers
 const studentRoute = require('./route/studentRoute')
