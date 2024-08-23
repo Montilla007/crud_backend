@@ -1,6 +1,6 @@
 const Student = require('../model/Student');
 
-const getData = async (req, res) => {
+const getStudent = async (req, res) => {
     try {
         const students = await Student.find();
         res.status(200).json(students);
@@ -9,7 +9,7 @@ const getData = async (req, res) => {
     }
 };
 
-const createData = async (req, res) => {
+const createStudent = async (req, res) => {
     const { firstName, lastName, course, year, enrolled } = req.body;
 
     try {
@@ -21,7 +21,7 @@ const createData = async (req, res) => {
     }
 };
 
-const updateData = async (req, res) => {
+const updateStudent = async (req, res) => {
     const { id } = req.params;
     const { firstName, lastName, course, year, enrolled } = req.body;
 
@@ -42,7 +42,7 @@ const updateData = async (req, res) => {
     }
 };
 
-const deleteData = async (req, res) => {
+const deleteStudent = async (req, res) => {
     const { id } = req.params;
 
     try {
@@ -58,4 +58,4 @@ const deleteData = async (req, res) => {
     }
 };
 
-module.exports = { getData, createData, updateData, deleteData };
+module.exports = { getStudent, createStudent, updateStudent, deleteStudent };

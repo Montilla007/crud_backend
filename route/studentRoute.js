@@ -1,12 +1,17 @@
 const express = require('express');
 const router = express.Router();  // Corrected to express.Router()
 
-const { getData, createData, updateData, deleteData } = require('../controller/studentController');
+const studentController = require('../controller/studentController');
 
 // Define routes
-router.get('/', getData);
-router.post('/', createData);
-router.put('/:id', updateData);
-router.delete('/:id', deleteData);
+router
+    .route('/')
+    .get(studentController.getStudent)
+    .post(studentController.createStudent);
 
+router
+    .route('/:id')
+    .put(studentController.updateStudent)
+    .delete(studentController.deleteStudent);
+    
 module.exports = router;  // Fixed typo
