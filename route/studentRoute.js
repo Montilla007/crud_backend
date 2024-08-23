@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();  // Corrected to express.Router()
 
-const { getData, createData, updateData, deleteData } = require('../controller/home');
+const { getData, createData, updateData, deleteData } = require('../controller/studentController');
 
 // Define routes
 router.get('/', getData);

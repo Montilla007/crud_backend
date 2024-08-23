@@ -12,14 +12,14 @@ const port = 5001;
 const connectDB = require('./connection/connect_db')
 
 // Routers
-const processData = require('./route/student_route')
+const studentRoute = require('./route/studentRoute')
 
 // Middleware
 app.use(bodyParser.json());
 app.use(cors());
 
 // Routes
-app.use('/api/v1/student', processData)
+app.use('/api/v1/student', studentRoute)
 
 app.get('/', (req, res) => {
     res.redirect('/api/v1/student');
