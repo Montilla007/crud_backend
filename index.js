@@ -21,6 +21,10 @@ app.use(cors());
 // Routes
 app.use('/api', processData)
 
+app.use('/', (req, res) => {
+    res.send("Hello my name is Christer Dale Reyes, the backend developer in Code of Duty aka the person who make miracles behind the curtain.");
+  });
+
 // Start server
 const start = async () => {
     try {
