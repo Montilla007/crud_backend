@@ -1,8 +1,11 @@
 const express = require('express');
-require('dotenv').config();
+const dotenv = require('dotenv');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+
+
+dotenv.config({ path: './config.env' });
 
 // Initialize express app
 const app = express();
@@ -26,18 +29,14 @@ app.get('/', (req, res) => {
   });
 
 // Database connection
-const DB = process.env.MONGO_URI.replace(
-    '<password>',
-    process.env.DATABASE_PASSWORD,
-  );
-  
-  mongoose
-    .connect(DB);
+mongoose
+  .connect(process.env.MONGO_URI)
+  .then(() => console.log('DB connection successful!'));
 
-// Start server
+// Start the server
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
   console.log(`App is running on port ${port}...`);
-})
+});
 
 module.exports = app;
