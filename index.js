@@ -20,13 +20,13 @@ app.use(cors());
 // Routes
 app.use('/api/v1/student', studentRoute)
 
-// app.use('/', (req, res) => {
-//     res.send("Hello my name is Christer Dale Reyes, the backend developer in Code of Duty aka the person who make miracles behind the curtain.");
-//   });
-
-app.get('/', (req, res) => {
-    res.redirect('/api/v1/student');
+app.use('/', (req, res) => {
+    res.send("Hello my name is Christer Dale Reyes, the backend developer in Code of Duty aka the person who make miracles behind the curtain.");
   });
+
+// app.get('/', (req, res) => {
+//     res.redirect('/api/v1/student');
+//   });
 
 // Database connection
 mongoose
